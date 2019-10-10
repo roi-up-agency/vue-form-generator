@@ -98,10 +98,8 @@ export default {
 			if (newModel != null) {
 				this.$nextTick(() => {
 					// Model changed!
-					if (this.options.validateAfterLoad === true && this.isNewModel !== true) {
+					if (this.options.validateAfterLoad && !this.isNewModel) {
 						this.validate();
-					} else {
-						this.clearValidationErrors();
 					}
 				});
 			}
@@ -112,10 +110,8 @@ export default {
 		this.$nextTick(() => {
 			if (this.model) {
 				// First load, running validation if neccessary
-				if (this.options.validateAfterLoad === true && this.isNewModel !== true) {
+				if (this.options.validateAfterLoad && !this.isNewModel) {
 					this.validate();
-				} else {
-					this.clearValidationErrors();
 				}
 			}
 		});
